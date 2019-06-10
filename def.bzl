@@ -41,16 +41,9 @@ py_library(
         strip_prefix = "six-1.9.0/",
         type = "tar.gz",
         build_file_content = """
-# Rename six.py to __init__.py
-genrule(
-    name = "rename",
-    srcs = ["six.py"],
-    outs = ["__init__.py"],
-    cmd = "cat $< >$@",
-)
 py_library(
    name = "six",
-   srcs = [":__init__.py"],
+   srcs = [":six.py"],
    visibility = ["//visibility:public"],
 )""",
     )
